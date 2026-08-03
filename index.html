@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恋♡爱♡测♡试：猜♡猜你♡喜♡欢♡谁</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        body {
+            background-color: #ffffff;
+        }
+        .tip-text {
+            color:#dc2626;
+            font-size:14px;
+            margin-top:4px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 animate-fade-in">
+    <div class="max-w-2xl mx-auto py-10 px-6 relative">
+        <!-- 右上角 关于本站链接 -->
+        <div class="absolute top-8 right-6">
+            <a href="about.html" class="text-blue-600 underline hover:text-blue-800">关于本站</a>
+        </div>
+
+        <header class="mb-10">
+            <h1 class="text-2xl font-bold">
+                恋♡爱♡测♡试：猜♡猜你♡喜♡欢♡谁
+            </h1>
+        </header>
+
+        <form id="testForm" class="space-y-6">
+            <div>
+                <label class="block font-semibold mb-2">1. 你的名字是？</label>
+                <select id="nameSelect" name="yourname" required class="w-full px-3 py-2 border border-gray-400 outline-none">
+                    <option value="" disabled selected>请选择姓名</option>
+                    <option value="sayo">冰川纱夜</option>
+                    <option value="hina">冰川日菜</option>
+                </select>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">2. 你的年龄是？</label>
+                <input id="ageInput" type="number" name="age" min="0" max="150"
+                    class="w-full px-3 py-2 border border-gray-400 outline-none">
+                <div id="ageTip" class="tip-text"></div>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">3. 你的生日是？</label>
+                <div class="flex gap-4">
+                    <input id="monthInput" type="number" name="month" min="1" max="12" placeholder="月"
+                        class="w-1/2 px-3 py-2 border border-gray-400 outline-none text-center">
+                    <input id="dayInput" type="number" name="day" min="1" max="31" placeholder="日"
+                        class="w-1/2 px-3 py-2 border border-gray-400 outline-none text-center">
+                </div>
+                <div id="birthdayTip" class="tip-text"></div>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">4. 你喜欢吃什么？</label>
+                <input id="foodInput" type="text" name="food"
+                    class="w-full px-3 py-2 border border-gray-400 outline-none">
+                <div id="foodTip" class="tip-text"></div>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">5. 你会什么乐器？</label>
+                <input id="instrumentInput" type="text" name="instrument"
+                    class="w-full px-3 py-2 border border-gray-400 outline-none">
+                <div id="instrumentTip" class="tip-text"></div>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">6. 你的发色是？</label>
+                <input type="text" name="hair"
+                    class="w-full px-3 py-2 border border-gray-400 outline-none">
+            </div>
+            <div>
+                <label class="block font-semibold mb-3">7. 你认为你的性格是：</label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="personality" value="A">
+                        <span>A. 热情阳光</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="personality" value="B">
+                        <span>B. 严肃认真</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="personality" value="C">
+                        <span>C. 天然电波</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="personality" value="D">
+                        <span>D. 傲傲傲娇</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="personality" value="E">
+                        <span>E. 内向胆怯</span>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">8. 你喜欢的动物是？</label>
+                <input id="animalInput" type="text" name="animal"
+                    class="w-full px-3 py-2 border border-gray-400 outline-none">
+                <div id="animalTip" class="tip-text"></div>
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">9. 你最近有什么想要的东西？</label>
+                <input type="text" name="wish"
+                    class="w-full px-3 py-2 border border-gray-400 outline-none">
+            </div>
+            <div class="pt-2">
+                <button type="submit" class="px-6 py-2 bg-gray-100 border border-gray-400 hover:bg-gray-200 cursor-pointer">
+                    查看结果
+                </button>
+            </div>
+        </form>
+
+        <hr class="my-10">
+
+        <!-- ========== Giscus 留言区 ========== -->
+        <div>
+            <h2 class="text-xl font-bold mb-4">留言区</h2>
+            <div class="giscus"></div>
+        </div>
+    </div>
+
+    <script>
+        // =========表单校验逻辑============
+        // 年龄校验 blur
+        const ageInput = document.getElementById('ageInput');
+        const ageTip = document.getElementById('ageTip');
+        ageInput.addEventListener('blur', function(){
+            const val = Number(this.value);
+            if(isNaN(val) || val <= 0){
+                ageTip.textContent = "";
+                return;
+            }
+            if(val < 18){
+                ageTip.textContent = "变年轻了！";
+            }else if(val > 18){
+                ageTip.textContent = "年龄没有这么大吧";
+            }else{
+                ageTip.textContent = "";
+            }
+        });
+
+        // 食物校验
+        const foodInput = document.getElementById('foodInput');
+        const foodTip = document.getElementById('foodTip');
+        foodInput.addEventListener('blur', function(){
+            const text = this.value.trim();
+            if(text === ""){
+                foodTip.textContent = "";
+                return;
+            }
+            if(!text.includes("薯条")){
+                foodTip.textContent = "比起其他食物，我更喜欢薯条";
+            }else{
+                foodTip.textContent = "";
+            }
+        });
+
+        //生日校验
+        const monthInput = document.getElementById('monthInput');
+        const dayInput = document.getElementById('dayInput');
+        const birthdayTip = document.getElementById('birthdayTip');
+        function checkBirthday(){
+            const m = Number(monthInput.value);
+            const d = Number(dayInput.value);
+            if(!m || !d){
+                birthdayTip.textContent = "";
+                return;
+            }
+            if(m !== 3 || d !== 20){
+                birthdayTip.textContent = "不要把生日给记错了啊";
+            }else{
+                birthdayTip.textContent = "";
+            }
+        }
+        monthInput.addEventListener('blur', checkBirthday);
+        dayInput.addEventListener('blur', checkBirthday);
+
+        //动物校验（仅纱夜）
+        const nameSelect = document.getElementById('nameSelect');
+        const animalInput = document.getElementById('animalInput');
+        const animalTip = document.getElementById('animalTip');
+        function checkAnimal(){
+            const selectedName = nameSelect.value;
+            const text = animalInput.value.trim();
+            if(selectedName !== "sayo"){
+                animalTip.textContent = "";
+                return;
+            }
+            if(text === ""){
+                animalTip.textContent = "";
+                return;
+            }
+            if(!text.includes("狗")){
+                animalTip.textContent = "我是狗派";
+            }else{
+                animalTip.textContent = "";
+            }
+        }
+        animalInput.addEventListener('blur', checkAnimal);
+        nameSelect.addEventListener('change', checkAnimal);
+
+        //乐器校验（仅纱夜，包含吉他提示）
+        const instrumentInput = document.getElementById('instrumentInput');
+        const instrumentTip = document.getElementById('instrumentTip');
+        function checkInstrument(){
+            const selectedName = nameSelect.value;
+            const text = instrumentInput.value.trim();
+            if(selectedName !== "sayo"){
+                instrumentTip.textContent = "";
+                return;
+            }
+            if(text === ""){
+                instrumentTip.textContent = "";
+                return;
+            }
+            if(text.includes("吉他")){
+                instrumentTip.textContent = "我只有吉他了！";
+            }else{
+                instrumentTip.textContent = "";
+            }
+        }
+        instrumentInput.addEventListener('blur', checkInstrument);
+        nameSelect.addEventListener('change', checkInstrument);
+
+        //表单跳转
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const selectName = formData.get('yourname');
+            let jumpLink = '';
+
+            if (selectName === 'sayo') {
+                jumpLink = 'result-sayo.html';
+            } else if (selectName === 'hina') {
+                jumpLink = 'result-hina.html';
+            }
+
+            if (jumpLink) {
+                alert("正在跳转……");
+                window.location.href = jumpLink;
+            } else {
+                alert('请选择姓名！');
+            }
+        });
+    </script>
+
+    <!-- Giscus留言组件，下面配置自行替换成你自己仓库信息 -->
+    <script src="https://giscus.app/client.js"
+            data-repo="你的用户名/你的仓库名"
+            data-repo-id="填你获取的repo-id"
+            data-category="Announcements"
+            data-category-id="分类ID"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+</body>
+</html>
