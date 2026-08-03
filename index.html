@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>恋♡爱♡测♡试：猜♡猜你♡喜♡欢♡谁</title>
+    <title>恋♡爱♡测♡试：猜♡猜♡你♡喜♡欢♡谁</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
@@ -33,7 +33,7 @@
 
         <header class="mb-10">
             <h1 class="text-2xl font-bold">
-                恋♡爱♡测♡试：猜♡猜你♡喜♡欢♡谁
+                恋♡爱♡测♡试：猜♡猜♡你♡喜♡欢♡谁
             </h1>
         </header>
 
@@ -126,8 +126,7 @@
     </div>
     
      <script>
-        // =========表单校验逻辑============
-        // 年龄校验 blur
+         
         const ageInput = document.getElementById('ageInput');
         const ageTip = document.getElementById('ageTip');
         ageInput.addEventListener('blur', function(){
@@ -145,7 +144,6 @@
             }
         });
 
-        // 食物校验
         const foodInput = document.getElementById('foodInput');
         const foodTip = document.getElementById('foodTip');
         foodInput.addEventListener('blur', function(){
@@ -161,7 +159,6 @@
             }
         });
 
-        //生日校验
         const monthInput = document.getElementById('monthInput');
         const dayInput = document.getElementById('dayInput');
         const birthdayTip = document.getElementById('birthdayTip');
@@ -181,7 +178,6 @@
         monthInput.addEventListener('blur', checkBirthday);
         dayInput.addEventListener('blur', checkBirthday);
 
-        //动物校验（仅纱夜）
         const nameSelect = document.getElementById('nameSelect');
         const animalInput = document.getElementById('animalInput');
         const animalTip = document.getElementById('animalTip');
@@ -205,7 +201,6 @@
         animalInput.addEventListener('blur', checkAnimal);
         nameSelect.addEventListener('change', checkAnimal);
 
-        //乐器校验（仅纱夜，包含吉他提示）
         const instrumentInput = document.getElementById('instrumentInput');
         const instrumentTip = document.getElementById('instrumentTip');
         function checkInstrument(){
@@ -228,7 +223,6 @@
         instrumentInput.addEventListener('blur', checkInstrument);
         nameSelect.addEventListener('change', checkInstrument);
 
-        //表单跳转
         document.getElementById('testForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
